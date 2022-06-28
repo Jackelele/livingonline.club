@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="LivingOnline - Twitch Streamer" />
+    <meta name="keywords" content="twitch, livingonline, clarystreams, clary, livingoffline, iamlivingonline, serverpro, streamer" />
+    <meta name="author" content="Stive Group" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>LivingOnline</title>
+
+    <link rel="stylesheet" type="text/css" href="css/output.css" />
+    <link rel="stylesheet" href="css/stive.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/5d554e7ea3.js" crossorigin="anonymous"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+</head>
+
+<body>
+    <section class="w-full h-screen bg-center bg-cover" style="background-image: url(./img/hero.jpg)">
+        <div class="w-full text-white elele-hero" id="top">
+            <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                <div class="p-4 flex flex-row items-center justify-between">
+                    <a href="#" class="text-lg font-semibold tracking-widest text-white uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Living Online</a
+            >
+            <button
+              class="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
+              @click="open = !open"
+            >
+              <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                <path
+                  x-show="!open"
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+                <path
+                  x-show="open"
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <nav
+            :class="{'flex': open, 'hidden': !open}"
+            class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row"
+          >
+            <a
+              class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg md:mt-0 hover:text-purple-400"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg md:mt-0 hover:text-purple-400"
+              href="/"
+              >About</a
+            >
+            <a
+              class="px-4 py-2 mt-2 text-sm font-semibold text-white bg-transparent rounded-lg md:mt-0 hover:text-purple-400"
+              href="https://twitch.tv/livingonline" target="_blank"
+              >Twitch</a
+            >
+            <div
+              @click.away="open = false"
+              class="relative"
+              x-data="{ open: false }"
+            >
+              <button
+                @click="open = !open"
+                class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 focus:outline-none focus:text-purple-400"
+              >
+                <span>Social Media</span>
+                <svg
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  :class="{'rotate-180': open, 'rotate-0': !open}"
+                  class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <div
+                x-show="open"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
+              >
+                <div class="px-2 py-2 rounded-md">
+                  <a
+                    class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg 0 md:mt-0 focus:outline-none hover:text-purple-400"
+                    href="https://instagram.com/iamlivingonline"
+                    target="_blank"
+                    >Instagram</a
+                  >
+                  <a
+                    class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg 0 md:mt-0 focus:outline-none hover:text-purple-400"
+                    href="https://instagram.com/iamlivingonline"
+                    target="_blank"
+                    >TikTok</a
+                  >
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <main class="px-4 pt-64 z-1">
+          <div class="text-center">
+            <h2
+              class="text-6xl tracking-tight leading-10 font-medium sm:text-5xl text-white sm:leading-none md:text-6xl"
+            >
+              <span class="text-indigo-600 font-bold">Living</span>Online
+            </h2>
+            <p
+              class="mt-3 text-white sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5"
+            >
+              <span class="italic">Professional </span> Twitch Streamer <br/>
+              <span class="text-indigo-200">Deez nuts</span>
+            </p>
+          </div>
+        </main>
+      </div>
+      <div>
+        <svg
+          class="waves editorial"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shape-rendering="auto"
+        >
+          <defs>
+            <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="#f461c1" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="#4579e2" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="#3461c1" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    </section>
+    <section>
+      <div class="feature-1 py-6 md:py-12 mt-15">
+        <div class="container px-4 mx-auto">
+          <div class="flex -mx-4">
+            <div class="px-4 text-center md:w-10/12 xl:w-8/12 mx-auto">
+              <h1 class="mb-4 text-4xl font-medium">
+                Interested in getting involved?
+              </h1>
+              <p class="mb-4 text-xl">
+                Join the LivingOnline family and get involved in our community!
+                We cannot wait to meet every single one of you.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:flex md:-mx-4 mt-12 md:pt-4">
+            <div class="px-4 md:w-1/3 mt-6 md:mt-0">
+              <div
+                class="feature-box text-center p-4 md:p-6 max-w-sm mx-auto border-2 border-solid border-gray-300 rounded md:h-full"
+              >
+                <div class="text-xl p-4 w-16 h-16 mx-auto">
+                  <i class="fa-solid fa-server text-indigo-600"></i>
+                </div>
+                <h5 class="text-xl font-medium mb-4">Minecraft Viewer SMP</h5>
+                <p class="text-gray-600 mb-3">
+                  The Minecraft survivial viewer server is where you may find
+                  LivingOnline streaming the most. Our server is running the
+                  latest 1.18 version and has a selection of fun plugins to make
+                  your survival experience better with LivingOnline!
+                </p>
+              </div>
+            </div>
+            <div class="px-4 md:w-1/3 mt-6 md:mt-0">
+              <div
+                class="feature-box text-center p-4 md:p-6 max-w-sm mx-auto border-2 border-solid border-gray-300 rounded md:h-full"
+              >
+                <div class="text-xl p-4 w-16 h-16 mx-auto">
+                  <i class="fa-brands fa-twitch text-indigo-600"></i>
+                </div>
+                <h5 class="text-xl font-medium mb-4">Twitch Community</h5>
+                <p class="text-gray-600 mb-3">
+                  Twitch is the main platform which LivingOnline streams on
+                  every single day (excluding Wednesdays). You will find a wide
+                  variety of games played on Twitch, got a suggestion? Pop it in
+                  chat! Oh, remember to follow the rules, our staff are
+                  watching!
+                </p>
+              </div>
+            </div>
+            <div class="px-4 md:w-1/3 mt-6 md:mt-0">
+              <div
+                class="feature-box text-center p-4 md:p-6 max-w-sm mx-auto border-2 border-solid border-gray-300 rounded md:h-full"
+              >
+                <div class="text-xl p-4 w-16 h-16 mx-auto">
+                  <i class="fa-brands fa-discord text-indigo-600"></i>
+                </div>
+                <h5 class="text-xl font-medium mb-4">Discord Servers</h5>
+                <p class="text-gray-600 mb-3">
+                  LivingOnline has a Discord for all viewers, fans and players.
+                  The main Discord provides information for SMP, streams and
+                  tweets! If you become a Twitch Subscriber you will have access
+                  to a secret sub-only Discord with Movie nights!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white dark:bg-gray-900">
+      <div class="container px-6 py-10 mx-auto">
+          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Watch<br> Living<span class="text-indigo-600">Online</span></h1>
+
+          <div class="min-w-full mt-12 md:h-[480px] rounded-xl overflow-hidden" id="twitch-embed"></div>
+      </div>
+  </section>
+  <div class="bg-gray-100 mt-10">
+    <div class="max-w-screen-lg py-10 px-4 sm:px-6 text-gray-800 sm:flex justify-between mx-auto">
+      <div class="p-5 sm:w-2/12 border-r">
+          <div class="text-sm uppercase text-indigo-600 font-bold">Menu</div>
+        <ul>
+          <li class="my-2">
+            <a class="hover:text-indigo-600" href="#top">Home</a>
+                    </li>
+                    <li class="my-2">
+                        <a class="hover:text-indigo-600" href="/">About</a>
+                    </li>
+                    <li class="my-2">
+                        <a class="hover:text-indigo-600" href="/">Twitch</a>
+                    </li>
+                    </ul>
+                </div>
+                <div class="p-5 sm:w-7/12 border-r text-center">
+                    <h3 class="font-bold text-xl text-indigo-600 mb-4">LivingOnline</h3>
+                    <p class="text-gray-500 text-sm mb-10">This website is dedicated to <span class="text-purple-600">LivingOnline</span>. LivingOnline is a variety twitch streamer from the United Kingdom. This website is maintained, developed by Stive Group. LivingOnline is not affiliated
+                        with Stive Group LTD.</p>
+                </div>
+                <div class="p-5 sm:w-3/12">
+                    <div class="text-sm uppercase text-indigo-600 font-bold">Contact</div>
+                    <p>Please only email us for issues regarding the website.</p>
+                    <ul>
+                        <li class="my-2">
+                            <a class="hover:text-indigo-600" href="mailto:support@stivegroup.com">support@stivegroup.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex py-5 m-auto text-gray-800 text-sm flex-col items-center border-t max-w-screen-xl">
+                <div class="md:flex-auto mt-2 flex-row flex">
+                    <a href="https://twitter.com/Living0ffline" class="w-6 mx-1" target="_blank">
+                        <i class="fa-brands fa-twitter text-gray-500 hover:text-indigo-600"></i>
+                    </a>
+                    <a href="https://www.instagram.com/iamlivingonline/" class="w-6 mx-1" target="_blank">
+                        <i class="fa-brands fa-instagram text-gray-500 hover:text-indigo-600"></i>
+                    </a>
+                    <a href="https://discord.gg/Srr5pfQURJ" class="w-6 mx-1" target="_blank">
+                        <i class="fa-brands fa-discord text-gray-500 hover:text-indigo-600"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@iamlivingonline" class="w-6 mx-1" target="_blank">
+                        <i class="fa-brands fa-tiktok text-gray-500 hover:text-indigo-600"></i>
+                    </a>
+                </div>
+                <div class="my-5 text-center">
+                    &copy; 2022 LivingOnline Website
+                    <p>Copyrighted under <a href="https://stivegroup.com" class="text-red-500 font-bold" target="_blank">Stive Group Limited</a></p>
+                </div>
+            </div>
+            <script type="text/javascript">
+                new Twitch.Embed("twitch-embed", {
+                    width: 1230,
+                    height: 480,
+                    channel: "LivingOnline",
+                    autoplay: false,
+                    allowfullscreen: true,
+                    parent: ["embed.livingonline.club", "watch.livingonline.club"],
+                });
+            </script>
+</body>
+
+</html>
